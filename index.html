@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Style/commonStyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Armazenamento de dados da loja ABC</h1>
+
+            <h3>Cadastro</h3>
+            <div class="custom-box">
+                <label for="cadastro">Escolha uma opção para cadastrar:</label>
+                <select id="cadastro">
+                    <option value="categoria">Categoria</option>
+                    <option value="cliente">Cliente</option>
+                    <option value="produto">Produto</option>
+                    <option value="vendedor">Vendedor</option>
+                </select>
+            </div>
+            <button onclick="redirecionar()" style="margin-top: 2rem;">Escolher</button>
+            <p><a href="Screens/pedido.html">Deseja criar um pedido? Clique aqui!</a></p>
+            <p><a href="Screens/dadosCadastrados.html">Deseja Visualizar os dados cadastrados? Clique aqui!</a></p>
+        </div>
+    </div>
+    <script>
+        function redirecionar() {
+            const value = document.getElementById('cadastro').value;
+
+            switch (value) {
+                case 'categoria':
+                    window.location.href = 'Screens/categoria.html';
+                    break;
+                case 'cliente':
+                    window.location.href = 'Screens/cliente.html';
+                    break;
+                case 'produto':
+                    window.location.href = 'Screens/produto.html';
+                    break;
+                case 'vendedor':
+                    window.location.href = 'Screens/vendedor.html';
+                    break;
+                default:
+                    alert('Opção inválida!');
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>

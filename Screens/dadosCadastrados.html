@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados Cadastrados</title>
+    <link rel="stylesheet" href="../Style/commonStyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="custom-box">
+                <h1>Dados Cadastrados</h1>
+                <div id="dadosExibidos"></div>
+                <button onclick="voltar()">Voltar</button>
+                <button onclick="limparDados()">Limpar Todos os Dados</button>
+            </div>
+        </div>
+    </div>
+    <script src="../App.js"></script>
+    <script>
+        function voltar() {
+            window.history.back();
+        }
+
+        function limparDados() {
+            if (confirm('Você tem certeza que deseja limpar todos os dados?')) {
+                localStorage.clear();
+                alert('Todos os dados foram limpos com sucesso!');
+                document.getElementById('dadosExibidos').innerHTML = '';
+            }
+        }
+
+        function exibirDados() {
+            const dadosContainer = document.getElementById('dadosExibidos');
+
+            const categorias = JSON.parse(localStorage.getItem('categorias')) || [];
+            const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+            const clientes = JSON.parse(localStorage.getItem('clientes')) || [];
+            const vendedores = JSON.parse(localStorage.getItem('vendedores')) || [];
+            const pedidos = JSON.parse(localStorage.getItem('pedidos')) || [];
+
+            if (categorias.length > 0) {
+                dadosContainer.innerHTML += '<h2>Categorias:</h2><ul>';
+                categorias.forEach(categoria => {
+                    dadosContainer.innerHTML += `<li>${categoria.nome}</li>`;
+                });
+                dadosContainer.innerHTML += '</ul>';
+            } else {
+                dadosContainer.innerHTML += '<h2>Categorias:</h2><p>Nenhuma categoria cadastrada.</p>';
+            }
+
+            if (produtos.length > 0) {
+                dadosContainer.innerHTML += '<h2>Produtos:</h2><ul>';
+                produtos.forEach(produto => {
+                    dadosContainer.innerHTML += `<li>${produto.nome} - R$ ${produto.valor.toFixed(2)} (Categoria: ${produto.categoria.nome})</li>`;
+                });
+                dadosContainer.innerHTML += '</ul>';
+            } else {
+                dadosContainer.innerHTML += '<h2>Produtos:</h2><p>Nenhum produto cadastrado.</p>';
+            }
+
+            if (clientes.length > 0) {
+                dadosContainer.innerHTML += '<h2>Clientes:</h2><ul>';
+                clientes.forEach(cliente => {
+                    dadosContainer.innerHTML += `<li>${cliente.nomeCompleto} (CPF: ${cliente.cpf})</li>`;
+                });
+                dadosContainer.innerHTML += '</ul>';
+            } else {
+                dadosContainer.innerHTML += '<h2>Clientes:</h2><p>Nenhum cliente cadastrado.</p>';
+            }
+
+            if (vendedores.length > 0) {
+                dadosContainer.innerHTML += '<h2>Vendedores:</h2><ul>';
+                vendedores.forEach(vendedor => {
+                    dadosContainer.innerHTML += `<li>${vendedor.nome} (Matrícula: ${vendedor.matricula})</li>`;
+                });
+                dadosContainer.innerHTML += '</ul>';
+            } else {
+                dadosContainer.innerHTML += '<h2>Vendedores:</h2><p>Nenhum vendedor cadastrado.</p>';
+            }
+            if (pedidos.length > 0) {
+                dadosContainer.innerHTML += '<h2>Pedidos:</h2><ul>';
+                pedidos.forEach(pedido => {
+                    dadosContainer.innerHTML += `
+                        <h4>Pedido:</h4>
+                        <li>Cliente: ${pedido.cliente} (Matrícula do vendedor: ${pedido.vendedor})</li>
+                        <li>Data: ${pedido.dataCriacao}</li>
+                        <li>Produtos:</li>
+                        <ul>
+                            `;
+                    pedido.produtos.forEach(produto => {
+                        dadosContainer.innerHTML += `${produto.nome} - R$ ${produto.valor.toFixed(2)}`;
+                    });
+
+                    dadosContainer.innerHTML += '</ul></li>';
+                });
+                dadosContainer.innerHTML += '</ul>';
+            } else {
+                dadosContainer.innerHTML += '<h2>Pedidos:</h2><p>Nenhum pedido cadastrado.</p>';
+            }
+
+        }
+
+        document.addEventListener('DOMContentLoaded', exibirDados);
+    </script>
+</body>
+
+</html>

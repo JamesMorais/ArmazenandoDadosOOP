@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos</title>
+    <link rel="stylesheet" href="../Style/commonStyle.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="custom-box">
+                <h3>Criar pedido</h3>
+                <label for="cliente">Cliente:</label>
+                <input type="text" id="cliente" placeholder="Digite o nome do cliente...">
+        
+                <label for="dataCriacao">Data de criação do pedido:</label>
+                <input type="date" id="dataCriacao" name="dataPedido" min="2021-01-31" max="2025-12-31" />
+                <label for="vendedor">Digite o número da matrícula do vendedor:</label>
+                <input type="number" id="vendedor" placeholder="Digite o número...">
+                <label for="qtd">Quantos produtos deseja pedir?</label>
+                <input type="number" min="1" id="qtd" placeholder="Digite a quantidade...">
+                <button id="criarPedido">Enviar</button>
+            </div>
+        
+            <div class="campoQtdProduto" id="campoQtdProduto" style="display: none;">
+                <div id="produtosCadastroContainer" class="custom-box"></div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="../App.js"></script>
+</body>
+</html>
