@@ -16,7 +16,6 @@ export class Cliente {
     this.score = score;
   }
 
-  // Métodos para modificar os atributos
   setNomeCompleto(nomeCompleto) {
     this.nomeCompleto = nomeCompleto;
   }
@@ -37,7 +36,6 @@ export class Cliente {
     this.score = score;
   }
 
-  // Métodos para obter os atributos
   getNomeCompleto() {
     return this.nomeCompleto;
   }

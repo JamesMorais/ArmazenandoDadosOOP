@@ -12,7 +12,6 @@ export class Produto {
     this.categoria = categoria;
   }
 
-  // Métodos para modificar os atributos
   setNome(nome) {
     this.nome = nome;
   }
@@ -25,7 +24,6 @@ export class Produto {
     this.categoria = categoria;
   }
 
-  // Métodos para obter os atributos
   getNome() {
     return this.nome;
   }

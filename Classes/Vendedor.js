@@ -10,7 +10,6 @@ export class Vendedor {
     this.matricula = matricula;
   }
 
-  // Métodos para modificar os atributos
   setNome(nome) {
     this.nome = nome;
   }
@@ -19,7 +18,6 @@ export class Vendedor {
     this.matricula = matricula;
   }
 
-  // Métodos para obter os atributos
   getNome() {
     return this.nome;
   }

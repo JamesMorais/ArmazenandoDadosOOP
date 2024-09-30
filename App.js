@@ -4,6 +4,8 @@ import { Cliente } from "./Classes/Cliente.js";
 import { Vendedor } from "./Classes/Vendedor.js";
 import { Pedido } from "./Classes/Pedido.js";
 
+// Acabei não utilizando os modifadores get e set
+
 let categorias = JSON.parse(localStorage.getItem('categorias')) || [];
 let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
 let clientes = JSON.parse(localStorage.getItem('clientes')) || [];
